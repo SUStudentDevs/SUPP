@@ -1,3 +1,8 @@
+/**
+ * MainBoard class
+ * @module Mainboard/index
+ * @author Ulysse Fontaine
+ */
 import React from 'react';
 import { connect } from 'react-redux';
 import {
@@ -7,12 +12,22 @@ import {
 } from 'semantic-ui-react';
 import { authTerminate } from '../actions/auth'
 
+/**
+ * Main Board once logged in
+ * @extends React.Component
+ */
 class MainBoard extends React.Component {
   
+  /**
+   * On logout, dispatch an AUTH_TERMINATE action
+   */
   logOut = () => {
     this.props.onLogout();
   }
 
+  /**
+   * Rendering method 
+   */
   render = () => {
     return (
       <Container>
@@ -33,6 +48,12 @@ class MainBoard extends React.Component {
   }
 }
 
+/**
+ * Map application state to props, especially user information
+ * @param {object} state - The state of the app
+ * @param {object} props - The previous props
+ * @return {object} The new props
+ */
 const mapStateToProps = (state, props) => {
   return {
     isLogged: state.auth.isLoggedIn,
@@ -40,6 +61,11 @@ const mapStateToProps = (state, props) => {
   };
 }
 
+/**
+ * Map dispatching of actions to props functions
+ * @param {function} dispatch - The dispatch method
+ * @return {object} The new props
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     onLogout: () => { dispatch(authTerminate()) }
