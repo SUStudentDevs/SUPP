@@ -20,6 +20,8 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 ```
 
+Pour générer la documentation vous aurez besoin de jsDoc : `npm install -g jsdoc` puis `npm run doc` pour la générer dans le dossier docs.
+
 Les technos utilisées sont:
 - React / Redux : [Doc React](https://reactjs.org/docs/hello-world.html) / [Doc Redux](https://redux.js.org/docs/introduction/Motivation.html)
 - GraphQL : [Doc GraphQL](http://graphql.org/learn/)
