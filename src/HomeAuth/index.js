@@ -39,7 +39,7 @@ class HomeAuth extends React.Component {
           </Header>
 
           <Form size='large' error={this.props.loginError}>
-            <Segment stacked >
+            <Segment>
 
               <Header as='h2' textAlign='center'>
                 <Icon name='student' size='small' />
