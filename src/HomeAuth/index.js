@@ -6,7 +6,8 @@ import {
   Image,
   Segment,
   Icon,
-  Button
+  Button,
+  Message
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { authStart } from '../actions/auth';
@@ -37,7 +38,7 @@ class HomeAuth extends React.Component {
             <Image src='assets/sorbonne-universite-logo.jpg' fluid style={{ width: '200px' }} />
           </Header>
 
-          <Form size='large' >
+          <Form size='large' error={this.props.loginError}>
             <Segment stacked >
 
               <Header as='h2' textAlign='center'>
@@ -45,7 +46,7 @@ class HomeAuth extends React.Component {
                 TopNivo
               </Header>
 
-              <Form.Input
+              <Form.Input error={this.props.loginError}
                 name='username'
                 value={username}
                 fluid
@@ -55,7 +56,7 @@ class HomeAuth extends React.Component {
                 onChange={ this.onChange }
               />
 
-              <Form.Input
+              <Form.Input error={this.props.loginError}
                 name='password'
                 value={password}
                 fluid
@@ -68,12 +69,22 @@ class HomeAuth extends React.Component {
               <Button color='teal' fluid size='large' onClick={this.onSubmit}>Connexion</Button>
             </Segment>
 
+            <Message error 
+              header='Erreur'
+              content='Les identifiants entrés sont erronés'/>
+
           </Form>
 
         </Grid.Column>
       </Grid>
     )
 
+  }
+}
+
+const mapStatesToProps = (state) => {
+  return {
+    loginError: state.auth.hasLoggingFailed
   }
 }
 
@@ -84,6 +95,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(
-  null,
+  mapStatesToProps,
   mapDispatchToProps
 )(HomeAuth);
