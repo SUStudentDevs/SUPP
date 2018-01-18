@@ -10,8 +10,7 @@ export const authStart = (username, password) => {
   const error = (message) => { return {type: AUTH_FAILED, message} }
   const user = authService.login(username, password);
 
-  if(user.token)
-    return success(user);
+  if(user.token) return success(user);
 
   return error(user.message);
 }

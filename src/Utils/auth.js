@@ -1,7 +1,7 @@
 const login = (username, password) => {
   console.log('username: ' + username);
   if(username === 'ok') {
-    return ({token: "token"});
+    return ({username: username, token: "token"});
   } else {
     return ({message: "Message"});
   }

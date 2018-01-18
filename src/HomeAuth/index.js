@@ -42,7 +42,7 @@ class HomeAuth extends React.Component {
 
               <Header as='h2' textAlign='center'>
                 <Icon name='student' size='small' />
-                Novotip
+                TopNivo
               </Header>
 
               <Form.Input
