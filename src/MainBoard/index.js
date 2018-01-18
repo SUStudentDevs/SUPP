@@ -17,9 +17,14 @@ class MainBoard extends React.Component {
     return (
       <Container>
         <Menu>
+          <Menu.Menu position='left'>
+            <Menu.Item>
+              <p>Bonjour <b>{this.props.username}</b></p>
+            </Menu.Item>
+          </Menu.Menu>
           <Menu.Menu position='right'>
             <Menu.Item>
-              <Button primary onClick={this.logOut}>Loggout</Button>
+              <Button primary onClick={this.logOut}>Déconnexion</Button>
             </Menu.Item>
           </Menu.Menu>
         </Menu>
@@ -30,7 +35,8 @@ class MainBoard extends React.Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    isLogged: state.auth.isLoggedIn
+    isLogged: state.auth.isLoggedIn,
+    username: state.auth.user.username
   };
 }
 
