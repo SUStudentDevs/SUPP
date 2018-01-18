@@ -1,3 +1,8 @@
+/**
+ * @file Describes actions related to authentification
+ * @module actions/auth
+ * @author Ulysse Fontaine
+ */
 import { authService } from '../Utils/auth';
 
 export const AUTH_START = 'AUTH_START';
@@ -15,6 +20,11 @@ export const authStart = (username, password) => {
   return error(user.message);
 }
 
+/**
+ * AUTH_COMPLETE action
+ * @param {object} user - The user authentificated
+ * @return {object} Object containing the AUTH_COMPLETE flag and the user data
+ */
 export const authComplete = (user) => {
   console.log(user);
   return {
@@ -23,6 +33,11 @@ export const authComplete = (user) => {
   };
 }
 
+/**
+ * AUTH_FAILED action
+ * @param {string} error - The error message
+ * @return {object} Object containing the AUTH_FAILED flag and the error message
+ */
 export const authFailed = (error) => {
   console.log(error);
   return {
@@ -31,8 +46,13 @@ export const authFailed = (error) => {
   };
 }
 
+/**
+ * AUTH_TERMINATE action
+ * @param {object} user - Mostly null
+ * @return {object} Object containing the AUTH_TERMINATE
+ */
 export const authTerminate = (user) => {
-  authService.logoff(user);
+  authService.logout(user);
   return {
     type: AUTH_TERMINATE
   }

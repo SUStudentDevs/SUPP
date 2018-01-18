@@ -1,3 +1,8 @@
+/**
+ * Reducers related to the user
+ * @module reducers/user
+ * @author Basile Pesin
+ */
 import * as A from '../actions/auth';
 
 const initialState = {
@@ -5,6 +10,12 @@ const initialState = {
   token: null
 };
 
+/**
+ * User reducer
+ * @param {object} state - The current state of the app
+ * @param {object} action - The dispatched action
+ * @return {object} The new state of the app
+ */
 const user = (state = initialState, action) => {
   switch(action.type) {
     case A.AUTH_COMPLETE:
