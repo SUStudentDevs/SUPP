@@ -36,7 +36,7 @@ class MainBoard extends React.Component {
 const mapStateToProps = (state, props) => {
   return {
     isLogged: state.auth.isLoggedIn,
-    username: state.auth.user.username
+    username: state.user.username
   };
 }
 
