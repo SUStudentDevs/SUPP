@@ -42,7 +42,7 @@ class HomeAuth extends React.Component {
 
               <Header as='h2' textAlign='center'>
                 <Icon name='student' size='small' />
-                TopNivo
+                Sorbonne Université Portail Pédagogique
               </Header>
 
               <Form.Input
