@@ -3,10 +3,11 @@
  * @module App/index
  * @author Ulysse Fontaine
  */
-import React from 'react';
-import { connect } from 'react-redux';
-import HomeAuth from '../HomeAuth';
-import MainBoard from '../MainBoard';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import HomeAuth from '../HomeAuth'
+import MainBoard from '../MainBoard'
 
 /**
  * App container, choosing which "page" to render
@@ -16,12 +17,12 @@ class App extends React.Component {
   /**
    * Rendering method
    */
-  render = () => {
-    if(this.props.isLoggedIn) {
-      return <MainBoard/>;
-    } else {
-      return <HomeAuth/>;
+  render () {
+    if (this.props.isLoggedIn) {
+      return <MainBoard />
     }
+
+    return <HomeAuth />
   }
 }
 
@@ -34,7 +35,11 @@ class App extends React.Component {
 const mapStateToProps = (state, props) => {
   return {
     isLoggedIn: state.auth.isLoggedIn
-  };
+  }
 }
 
-export default connect(mapStateToProps)(App);
+App.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired
+}
+
+export default connect(mapStateToProps)(App)

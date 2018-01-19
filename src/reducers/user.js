@@ -3,12 +3,12 @@
  * @module reducers/user
  * @author Basile Pesin
  */
-import * as A from '../actions/auth';
+import * as A from '../actions/auth'
 
 const initialState = {
   username: null,
   token: null
-};
+}
 
 /**
  * User reducer
@@ -17,19 +17,19 @@ const initialState = {
  * @return {object} The new state of the app
  */
 const user = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case A.AUTH_COMPLETE:
       return {...state,
-        username:action.user.username,
-        token:action.user.token
-      };
+        username: action.user.username,
+        token: action.user.token
+      }
 
     case A.AUTH_TERMINATE:
-      return initialState;
+      return initialState
 
     default:
-      return state;
+      return state
   }
 }
 
-export default user;
+export default user
