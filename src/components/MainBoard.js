@@ -1,34 +1,34 @@
 /**
  * MainBoard class
- * @module Mainboard/index
+ * @module components/MainBoard
  * @author Ulysse Fontaine
  */
-import React from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import {
   Container,
   Menu,
   Button
-} from 'semantic-ui-react';
-import { authTerminate } from '../actions/auth'
+} from 'semantic-ui-react'
+import { authTerminate } from '../actions/auth'
 
 /**
  * Main Board once logged in
  * @extends React.Component
  */
 class MainBoard extends React.Component {
-  
   /**
    * On logout, dispatch an AUTH_TERMINATE action
    */
   logOut = () => {
-    this.props.onLogout();
+    this.props.onLogout()
   }
 
   /**
-   * Rendering method 
+   * Rendering method
    */
-  render = () => {
+  render () {
     return (
       <Container>
         <Menu>
@@ -44,7 +44,7 @@ class MainBoard extends React.Component {
           </Menu.Menu>
         </Menu>
       </Container>
-    ); 
+    )
   }
 }
 
@@ -54,11 +54,10 @@ class MainBoard extends React.Component {
  * @param {object} props - The previous props
  * @return {object} The new props
  */
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
-    isLogged: state.auth.isLoggedIn,
     username: state.user.username
-  };
+  }
 }
 
 /**
@@ -69,10 +68,15 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLogout: () => { dispatch(authTerminate()) }
-  };
+  }
+}
+
+MainBoard.propTypes = {
+  onLogout: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MainBoard);
+)(MainBoard)

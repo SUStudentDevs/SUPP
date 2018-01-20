@@ -11,11 +11,11 @@
  * @return {object} If success, contains user data and token. Else, contains error message
  */
 const login = (username, password) => {
-  console.log('username: ' + username);
-  if(username === 'ok') {
-    return ({username: username, token: "token"});
+  console.log('username: ' + username)
+  if (username === 'ok') {
+    return ({username: username, token: 'token'})
   } else {
-    return ({message: "Message"});
+    return ({message: 'Message'})
   }
 }
 
@@ -25,11 +25,10 @@ const login = (username, password) => {
  * @return {object} null
  */
 const logout = (user) => {
-  return null;
+  return null
 }
 
 export const authService = {
   login,
   logout
 }
-

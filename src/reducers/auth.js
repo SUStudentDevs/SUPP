@@ -3,13 +3,13 @@
  * @module reducers/auth
  * @author Ulysse Fontaine
  */
-import * as A from '../actions/auth';
+import * as A from '../actions/auth'
 
 const initialState = {
   isLoggedIn: false,
   isLogging: false,
   hasLoggingFailed: false
-};
+}
 
 /**
  * Auth reducer
@@ -18,38 +18,37 @@ const initialState = {
  * @return {object} The new state of the app
  */
 const auth = (state = initialState, action) => {
-  switch(action.type){
+  switch (action.type) {
     case A.AUTH_START:
       return {...state,
         isLoggedIn: false,
         isLogging: true,
         hasLoggingFailed: false
-    };
-
+      }
     case A.AUTH_COMPLETE:
       return {...state,
-      isLoggedIn: true,
-      isLogging: false,
-      hasLoggingFailed: false
-    };
+        isLoggedIn: true,
+        isLogging: false,
+        hasLoggingFailed: false
+      }
 
     case A.AUTH_FAILED:
       return {...state,
         isLoggedIn: false,
         isLogging: false,
         hasLoggingFailed: true
-    };
+      }
 
     case A.AUTH_TERMINATE:
-      return {...state, 
+      return {...state,
         isLoggedIn: false,
         isLogging: false,
         hasLoggingFailed: false
-    };
+      }
 
     default:
-      return state;
-  } 
-};
+      return state
+  }
+}
 
-export default auth;
+export default auth
