@@ -18,7 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "doc": "jsdoc -r src -d docs"
+    "doc": "jsdoc -r src -d docs",
+    "lint": "./node_modules/.bin/eslint ./src/**"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
