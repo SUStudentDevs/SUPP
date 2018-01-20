@@ -1,6 +1,6 @@
 /**
  * HomeAuth class
- * @module HomeAuth/index
+ * @module components/HomeAuth
  * @author Ulysse Fontaine
  */
 import React from 'react'

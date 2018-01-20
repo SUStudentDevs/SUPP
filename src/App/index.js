@@ -6,8 +6,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import HomeAuth from '../HomeAuth'
-import MainBoard from '../MainBoard'
+import HomeAuth from '../components/HomeAuth'
+import MainBoard from '../components/MainBoard'
 
 /**
  * App container, choosing which "page" to render

@@ -1,6 +1,6 @@
 /**
  * MainBoard class
- * @module Mainboard/index
+ * @module components/MainBoard
  * @author Ulysse Fontaine
  */
 import React from 'react'
