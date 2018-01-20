@@ -1,5 +1,5 @@
 /**
- * HomeAuth component
+ * HomeAuth class
  * @module components/HomeAuth
  * @author Ulysse Fontaine
  */
@@ -16,7 +16,7 @@ import {
   Message
 } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { authStart } from '../actions/auth'
+import { login } from '../actions/auth'
 
 /**
  * Authentification (Login) page
@@ -60,8 +60,11 @@ class HomeAuth extends React.Component {
             <Image src='assets/sorbonne-universite-logo.jpg' fluid style={{ width: '200px' }} />
           </Header>
 
-          <Form size='large' error={this.props.loginError}>
-            <Segment>
+          <Segment
+            attached
+            loading={this.props.isLogging}
+          >
+            <Form size='large' error={this.props.loginError}>
 
               <Header as='h2' textAlign='center'>
                 <Icon name='student' size='small' />
@@ -89,14 +92,14 @@ class HomeAuth extends React.Component {
                 onChange={this.onChange}
               />
               <Button color='teal' fluid size='large' onClick={this.onSubmit}>Connexion</Button>
-            </Segment>
-
-            <Message error
-              header='Erreur'
-              content='Les identifiants entrés sont erronés.'
-            />
-
-          </Form>
+            </Form>
+          </Segment>
+          <Message error
+            hidden={!this.props.loginError}
+            attached='bottom'
+            header='Erreur'
+            content='Les identifiants entrés sont erronés.'
+          />
 
         </Grid.Column>
       </Grid>
@@ -105,31 +108,33 @@ class HomeAuth extends React.Component {
 }
 
 /**
- * Map hasLoggingFailed application state to HomeAuth component props
+ * Map hasLoggingFailed application state to props
  * @param {object} state - The state of the app
  * @param {object} props - The previous props
  * @return {object} The new props
  */
 const mapStateToProps = (state, props) => {
   return {
-    loginError: state.auth.hasLoggingFailed
+    loginError: state.auth.hasLoggingFailed,
+    isLogging: state.auth.isLogging
   }
 }
 
 /**
- * Map dispatching of authStart action to HomeHauth component onLogin method
+ * Map dispatching of actions to props functions
  * @param {function} dispatch - The dispatch method
  * @return {object} The new props
  */
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onLogin: (username, password) => { dispatch(authStart(username, password)) }
+    onLogin: (username, password) => { dispatch(login(username, password)) }
   }
 }
 
 HomeAuth.propTypes = {
   onLogin: PropTypes.func.isRequired,
+  isLogging: PropTypes.bool.isRequired,
   loginError: PropTypes.bool.isRequired
 }
 

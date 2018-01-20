@@ -5,12 +5,13 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 import reducers from './reducers'
 import App from './components'
 
 const ROOT_NODE = document.getElementById('root')
-let store = createStore(reducers)
+let store = createStore(reducers, applyMiddleware(thunk))
 
 /**
  * Main container, holding the store and the App component

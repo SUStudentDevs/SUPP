@@ -10,14 +10,32 @@ export const AUTH_COMPLETE = 'AUTH_COMPLETE'
 export const AUTH_FAILED = 'AUTH_FAILED'
 export const AUTH_TERMINATE = 'AUTH_TERMINATE'
 
-export const authStart = (username, password) => {
-  const success = (user) => { return {type: AUTH_COMPLETE, user} }
-  const error = (message) => { return {type: AUTH_FAILED, message} }
-  const user = authService.login(username, password)
+/**
+ * login Action.
+ * @params {string} username - Username for authentification
+ * @params {string} password - Password for authentification
+ * @returns {function} Function for dispatch
+ */
+export const login = (username, password) => {
+  return dispatch => {
+    dispatch(authStart())
+    setTimeout(() => {
+      const user = authService.login(username, password)
 
-  if (user.token) return success(user)
+      if (user.token) dispatch(authComplete(user))
+      else dispatch(authFailed(user.message))
+    }, 5000)
+  }
+}
 
-  return error(user.message)
+/**
+ * AUTH_START action
+ * @return {object} Object containing the AUTH_START flag
+ */
+export const authStart = () => {
+  return {
+    type: AUTH_START
+  }
 }
 
 /**
