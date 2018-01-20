@@ -130,7 +130,7 @@ const mapDispatchToProps = (dispatch) => {
 
 HomeAuth.propTypes = {
   onLogin: PropTypes.func.isRequired,
-  loginError: PropTypes.bool.isRequires
+  loginError: PropTypes.bool.isRequired
 }
 
 export default connect(

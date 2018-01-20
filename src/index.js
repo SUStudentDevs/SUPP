@@ -7,7 +7,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import reducers from './reducers'
-import App from './App'
+import App from './components'
 
 const ROOT_NODE = document.getElementById('root')
 let store = createStore(reducers)

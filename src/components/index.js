@@ -1,13 +1,13 @@
 /**
  * App class
- * @module App/index
+ * @module components/index.js
  * @author Ulysse Fontaine
  */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import HomeAuth from '../components/HomeAuth'
-import MainBoard from '../components/MainBoard'
+import HomeAuth from './HomeAuth'
+import MainBoard from './MainBoard'
 
 /**
  * App container, choosing which "page" to render
