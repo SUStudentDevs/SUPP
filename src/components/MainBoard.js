@@ -1,5 +1,5 @@
 /**
- * MainBoard class
+ * MainBoard component
  * @module components/MainBoard
  * @author Ulysse Fontaine
  */
@@ -49,7 +49,7 @@ class MainBoard extends React.Component {
 }
 
 /**
- * Map application state to props, especially user information
+ * Map application state (user data) to MainBoard component props
  * @param {object} state - The state of the app
  * @param {object} props - The previous props
  * @return {object} The new props
@@ -61,7 +61,7 @@ const mapStateToProps = (state) => {
 }
 
 /**
- * Map dispatching of actions to props functions
+ * Map dispatching of actions to MainBoard component methods
  * @param {function} dispatch - The dispatch method
  * @return {object} The new props
  */

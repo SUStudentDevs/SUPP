@@ -1,6 +1,6 @@
 /**
- * App class
- * @module components/index.js
+ * App component
+ * @module components/index
  * @author Ulysse Fontaine
  */
 import React from 'react'
@@ -10,7 +10,7 @@ import HomeAuth from './HomeAuth'
 import MainBoard from './MainBoard'
 
 /**
- * App container, choosing which "page" to render
+ * App component, choosing which "page" to render
  * @extends React.Component
  */
 class App extends React.Component {
@@ -27,7 +27,7 @@ class App extends React.Component {
 }
 
 /**
- * Map isLoggedIn application state to props
+ * Map isLoggedIn application state to App component props
  * @param {object} state - The state of the app
  * @param {object} props - The previous props
  * @return {object} the new props

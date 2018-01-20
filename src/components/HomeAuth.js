@@ -1,5 +1,5 @@
 /**
- * HomeAuth class
+ * HomeAuth component
  * @module components/HomeAuth
  * @author Ulysse Fontaine
  */
@@ -105,7 +105,7 @@ class HomeAuth extends React.Component {
 }
 
 /**
- * Map hasLoggingFailed application state to props
+ * Map hasLoggingFailed application state to HomeAuth component props
  * @param {object} state - The state of the app
  * @param {object} props - The previous props
  * @return {object} The new props
@@ -117,7 +117,7 @@ const mapStateToProps = (state, props) => {
 }
 
 /**
- * Map dispatching of actions to props functions
+ * Map dispatching of authStart action to HomeHauth component onLogin method
  * @param {function} dispatch - The dispatch method
  * @return {object} The new props
  */
