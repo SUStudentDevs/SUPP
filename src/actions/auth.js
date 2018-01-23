@@ -24,7 +24,7 @@ export const login = (username, password) => {
 
       if (user.token) dispatch(authComplete(user))
       else dispatch(authFailed(user.message))
-    }, 5000)
+    }, 500)
   }
 }
 
