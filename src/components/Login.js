@@ -1,6 +1,6 @@
 /**
- * HomeAuth class
- * @module components/HomeAuth
+ * Login class
+ * @module components/Login
  * @author Ulysse Fontaine
  */
 import React from 'react'
@@ -16,13 +16,14 @@ import {
   Message
 } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { login } from '../actions/auth'
 
 /**
- * Authentification (Login) page
+ * Login page
  * @extends React.Component
  */
-class HomeAuth extends React.Component {
+class Login extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -51,8 +52,17 @@ class HomeAuth extends React.Component {
    * Rendering method
    */
   render () {
+    const { from } = this.props.location.state || { from: { pathname: '/' } } // Pour le moment
     const {username, password} = this.state
 
+    // Getting back to the page we're coming from
+    if (this.props.isLoggedIn) {
+      return (
+        <Redirect to={from} />
+      )
+    }
+
+    // Else, display the login page
     return (
       <Grid centered verticalAlign='middle' style={{ height: '100%' }} >
         <Grid.Column style={{ maxWidth: 400 }} >
@@ -116,7 +126,8 @@ class HomeAuth extends React.Component {
 const mapStateToProps = (state, props) => {
   return {
     loginError: state.auth.hasLoggingFailed,
-    isLogging: state.auth.isLogging
+    isLogging: state.auth.isLogging,
+    isLoggedIn: state.auth.isLoggedIn
   }
 }
 
@@ -132,13 +143,15 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-HomeAuth.propTypes = {
+Login.propTypes = {
   onLogin: PropTypes.func.isRequired,
   isLogging: PropTypes.bool.isRequired,
-  loginError: PropTypes.bool.isRequired
+  loginError: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  location: PropTypes.object.isRequired
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomeAuth)
+)(Login)
