@@ -30,7 +30,7 @@ class App extends React.Component {
         <Route path='/login' component={Login} />
         <Route path='/' render={(props) => {
           if (this.props.isLoggedIn) return (<MainBoard />)
-          return (<Redirect to={{pathname: '/login', state: { from: props.location }}} />)
+          return (<Redirect to={{pathname: '/login', state: { from: '/' }}} />)
         }} />
       </Switch>
     </Router>)
