@@ -6,7 +6,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import HomeAuth from './HomeAuth'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from 'react-router-dom'
+
+import Login from './Login'
 import MainBoard from './MainBoard'
 
 /**
@@ -18,11 +25,15 @@ class App extends React.Component {
    * Rendering method
    */
   render () {
-    if (this.props.isLoggedIn) {
-      return <MainBoard />
-    }
-
-    return <HomeAuth />
+    return (<Router>
+      <Switch>
+        <Route path='/login' component={Login} />
+        <Route path='/' render={(props) => {
+          if (this.props.isLoggedIn) return (<MainBoard />)
+          return (<Redirect to={{pathname: '/login', state: { from: '/' }}} />)
+        }} />
+      </Switch>
+    </Router>)
   }
 }
 

@@ -44,7 +44,7 @@ export const authStart = () => {
  * @return {object} Object containing the AUTH_COMPLETE flag and the user data
  */
 export const authComplete = (user) => {
-  console.log(user)
+  // console.log(user)
   return {
     type: AUTH_COMPLETE,
     user: user
@@ -57,7 +57,7 @@ export const authComplete = (user) => {
  * @return {object} Object containing the AUTH_FAILED flag and the error message
  */
 export const authFailed = (error) => {
-  console.log(error)
+  // console.log(error)
   return {
     type: AUTH_FAILED,
     error: error

@@ -11,7 +11,7 @@
  * @return {object} If success, contains user data and token. Else, contains error message
  */
 const login = (username, password) => {
-  console.log('username: ' + username)
+  // console.log('username: ' + username)
   if (username === 'ok') {
     return ({username: username, token: 'token'})
   } else {
