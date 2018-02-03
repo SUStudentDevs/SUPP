@@ -7,10 +7,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
+  Switch,
+  Route
+} from 'react-router-dom'
+import {
   Container,
+  Grid,
   Menu,
   Button
 } from 'semantic-ui-react'
+import Home from './Home'
+import Grades from './Grades'
+import Registration from './Registration'
+import MenuLink from './MenuLink'
 
 import { authTerminate } from '../actions/auth'
 
@@ -28,6 +37,7 @@ class MainBoard extends React.Component {
    * Rendering method
    */
   render () {
+    const { activeNavItem } = this.state
     return (
       <Container>
         <Menu>
@@ -42,6 +52,25 @@ class MainBoard extends React.Component {
             </Menu.Item>
           </Menu.Menu>
         </Menu>
+
+        <Grid>
+          <Grid.Column width={4}>
+            <Menu fluid vertical>
+              <MenuLink label='Accueil' to='/' isActive={activeNavItem === 'Accueil'} onClick={this.handleLinkClick} />
+              <MenuLink label='Inscriptions Pédagogiques' to='/inscriptions' isActive={activeNavItem === 'Inscriptions Pédagogiques'} onClick={this.handleLinkClick} />
+              <MenuLink label='Notes' to='/notes' isActive={activeNavItem === 'Notes'} onClick={this.handleLinkClick} />
+            </Menu>
+          </Grid.Column>
+
+          <Grid.Column stretched width={12}>
+            <Switch>
+              <Route path='/inscriptions' component={Registration} />
+              <Route path='/notes' component={Grades} />
+              <Route path='/' component={Home} />
+            </Switch>
+          </Grid.Column>
+        </Grid>
+
       </Container>
     )
   }

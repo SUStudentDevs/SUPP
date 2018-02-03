@@ -5,7 +5,6 @@
  */
 
 import React from 'react'
-import PropTypes from 'prop-types'
 import {
   Segment,
   Accordion,
@@ -120,9 +119,5 @@ class Grades extends React.Component {
     )
   }
 }
-
-// Grades.propTypes = {
-//  grades: PropTypes.object.isRequired,
-// }
 
 export default Grades
