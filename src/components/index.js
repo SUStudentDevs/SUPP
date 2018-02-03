@@ -7,14 +7,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
-  BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from 'react-router-dom'
 
 import Login from './Login'
 import MainBoard from './MainBoard'
+import PrivateRoute from './PrivateRoute'
 
 /**
  * App component, choosing which "page" to render
@@ -25,15 +24,16 @@ class App extends React.Component {
    * Rendering method
    */
   render () {
-    return (<Router>
+    return (
       <Switch>
         <Route path='/login' component={Login} />
-        <Route path='/' render={(props) => {
-          if (this.props.isLoggedIn) return (<MainBoard />)
-          return (<Redirect to={{pathname: '/login', state: { from: '/' }}} />)
-        }} />
+        <PrivateRoute
+          component={MainBoard}
+          condition={this.props.isLoggedIn}
+          redirect='/login'
+        />
       </Switch>
-    </Router>)
+    )
   }
 }
 
