@@ -5,6 +5,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducers from './reducers'
@@ -24,7 +25,9 @@ class Main extends React.Component {
   render () {
     return (
       <Provider store={store}>
-        <App />
+        <Router>
+          <Route path='/' component={App} />
+        </Router>
       </Provider>
     )
   }
