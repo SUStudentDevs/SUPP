@@ -8,7 +8,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
   Switch,
-  Route
+  Route,
+  Link
 } from 'react-router-dom'
 import {
   Container,
@@ -19,7 +20,6 @@ import {
 import Home from './Home'
 import Grades from './Grades'
 import Registration from './Registration'
-import MenuLink from './MenuLink'
 
 import { authTerminate } from '../actions/auth'
 
@@ -28,7 +28,7 @@ import { authTerminate } from '../actions/auth'
  * @extends React.Component
  */
 class MainBoard extends React.Component {
-  state = { activeNavItem: 'Accueil' }
+  state = { activeNavItem: 0 }
   handleLinkClick = (index) => {
     this.setState({ activeNavItem: index })
   }
@@ -56,9 +56,9 @@ class MainBoard extends React.Component {
         <Grid>
           <Grid.Column width={4}>
             <Menu fluid vertical>
-              <MenuLink label='Accueil' to='/' isActive={activeNavItem === 'Accueil'} onClick={this.handleLinkClick} />
-              <MenuLink label='Inscriptions Pédagogiques' to='/inscriptions' isActive={activeNavItem === 'Inscriptions Pédagogiques'} onClick={this.handleLinkClick} />
-              <MenuLink label='Notes' to='/notes' isActive={activeNavItem === 'Notes'} onClick={this.handleLinkClick} />
+              <Menu.Item as={Link} name='Accueil' to='/' active={activeNavItem === 0} onClick={() => this.handleLinkClick(0)} />
+              <Menu.Item as={Link} name='Inscriptions Pédagogiques' to='/inscriptions' active={activeNavItem === 1} onClick={() => this.handleLinkClick(1)} />
+              <Menu.Item as={Link} name='Notes' to='/notes' active={activeNavItem === 2} onClick={() => this.handleLinkClick(2)} />
             </Menu>
           </Grid.Column>
 
