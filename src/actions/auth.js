@@ -3,7 +3,7 @@
  * @module actions/auth
  * @author Ulysse Fontaine
  */
-import { authService } from '../Utils/auth'
+import { authService } from '../utils/auth'
 
 export const AUTH_START = 'AUTH_START'
 export const AUTH_COMPLETE = 'AUTH_COMPLETE'
@@ -19,12 +19,9 @@ export const AUTH_TERMINATE = 'AUTH_TERMINATE'
 export const login = (username, password) => {
   return dispatch => {
     dispatch(authStart())
-    setTimeout(() => {
-      const user = authService.login(username, password)
-
-      if (user.token) dispatch(authComplete(user))
-      else dispatch(authFailed(user.message))
-    }, 500)
+    authService.login(username, password).then(
+      (res) => dispatch(authComplete(res.data.token, username)),
+      (error) => dispatch(authFailed(error)))
   }
 }
 
@@ -43,11 +40,16 @@ export const authStart = () => {
  * @param {object} user - The user authentificated
  * @return {object} Object containing the AUTH_COMPLETE flag and the user data
  */
-export const authComplete = (user) => {
+export const authComplete = (token, username) => {
   // console.log(user)
   return {
     type: AUTH_COMPLETE,
-    user: user
+    auth: {
+      token: token
+    },
+    user: {
+      username: username
+    }
   }
 }
 

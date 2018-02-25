@@ -1,8 +1,10 @@
 /**
  * Utility functions for user authentification
- * @module Utils/auth
+ * @module utils/auth
  * @author Ulysse Fontaine
  */
+
+import axios from 'axios'
 
 /**
  * Login method
@@ -10,14 +12,15 @@
  * @param {string} password - The password entered
  * @return {object} If success, contains user data and token. Else, contains error message
  */
-const login = (username, password) => {
-  // console.log('username: ' + username)
-  if (username === 'ok') {
-    return ({username: username, token: 'token'})
-  } else {
-    return ({message: 'Message'})
-  }
-}
+const login = (username, password) =>
+  axios.post('http://localhost:4000/login/', {
+    username: username,
+    password: password
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
 
 /**
  * Logout method

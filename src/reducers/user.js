@@ -7,7 +7,7 @@ import * as A from '../actions/auth'
 
 const initialState = {
   username: null,
-  token: null
+  full_name: null
 }
 
 /**
@@ -20,8 +20,7 @@ const user = (state = initialState, action) => {
   switch (action.type) {
     case A.AUTH_COMPLETE:
       return {...state,
-        username: action.user.username,
-        token: action.user.token
+        username: action.user.username
       }
 
     case A.AUTH_TERMINATE:
