@@ -19,6 +19,10 @@ export const AUTH_TERMINATE = 'AUTH_TERMINATE'
 export const login = (username, password) => {
   return dispatch => {
     dispatch(authStart())
+    if (username === '' || password === '') {
+      dispatch(authFailed('You must enter a username and a password !'))
+      return
+    }
     authService.login(username, password).then(
       (res) => dispatch(authComplete(res.data.token, username)),
       (error) => dispatch(authFailed(error)))
